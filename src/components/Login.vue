@@ -57,10 +57,9 @@ export default {
       this.$refs[formName].validate(async valid => {
         if (!valid) return
         const { data: res } = await this.$http.post('login', this.loginForm)
-        var msg = res.meta.msg
-        if (res.meta.status !== 200) return this.$message.error(msg)
+        if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
         this.$message({
-          message: msg,
+          message: res.meta.msg,
           type: 'success'
         })
         // 将登录成功之后的 token 保存到客户端 sessionStorage中
