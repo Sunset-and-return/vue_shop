@@ -222,7 +222,7 @@ export default {
       this.$message.success(result.meta.msg)
       this.userList = result.data.users
       this.total = result.data.total
-      console.log(this.userList)
+      // console.log(this.userList)
     },
     // 监听 pagesize 改变的事件
     handleSizeChange(newSize) {
