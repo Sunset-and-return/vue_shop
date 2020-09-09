@@ -65,7 +65,7 @@
     <!-- 展示物流进度 -->
     <el-dialog class="left" title="物流进度" :visible.sync="progressVisible" width="50%">
       <!-- 时间线 -->
-      <el-timeline :reverse="reverse">
+      <el-timeline :reverse="true">
         <el-timeline-item v-for="(activity, index) in progressInfo" :key="index" :timestamp="activity.ftime">
           {{activity.context}}
         </el-timeline-item>
@@ -115,7 +115,7 @@ export default {
 
       this.orderList = res.data.goods
       this.total = res.data.total
-      console.log(this.orderList)
+      // console.log(this.orderList)
     },
     handleSizeChange(newSize) {
       this.queryInfo.pagesize = newSize
@@ -137,7 +137,7 @@ export default {
       if (res.meta.status !== 200) return this.$message.error('获取物流进度信息失败')
 
       this.progressInfo = res.data
-      console.log(this.progressInfo)
+      // console.log(this.progressInfo)
       this.progressVisible = true
     }
   }
