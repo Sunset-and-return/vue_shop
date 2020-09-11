@@ -146,10 +146,6 @@ export default {
     },
     // 级联选择器选中项改变事件
     handleChange() {
-      // this.addForm.forEach(item => {
-      //   item.goods_cat = item.goods_cat.join(',')
-      // })
-      console.log(this.addForm.goods_cat)
       if (this.addForm.goods_cat.length !== 3) {
         this.addForm.goods_cat = []
       }

@@ -75,7 +75,6 @@ export default {
       this.$message.success('获取商品列表成功！')
       this.goodsList = res.data.goods
       this.total = res.data.total
-      console.log(this.goodsList)
     },
     handleSizeChange(newSize) {
       this.queryInfo.pagesize = newSize

@@ -33,8 +33,10 @@
           </template>
         </el-table-column>
         <el-table-column label="操作" width="150px">
-          <el-button type="primary" icon="el-icon-edit" size="mini" @click="showBox"></el-button>
-          <el-button type="success" icon="el-icon-location-outline" size="mini" @click="showProgressBox"></el-button>
+          <template>
+            <el-button type="primary" icon="el-icon-edit" size="mini" @click="showBox"></el-button>
+            <el-button type="success" icon="el-icon-location-outline" size="mini" @click="showProgressBox"></el-button>
+          </template>
         </el-table-column>
       </el-table>
 
@@ -65,11 +67,17 @@
     <!-- 展示物流进度 -->
     <el-dialog class="left" title="物流进度" :visible.sync="progressVisible" width="50%">
       <!-- 时间线 -->
-      <el-timeline :reverse="true">
+      <!-- <el-timeline :reverse="true">
         <el-timeline-item v-for="(activity, index) in progressInfo" :key="index" :timestamp="activity.ftime">
           {{activity.context}}
         </el-timeline-item>
-      </el-timeline>
+      </el-timeline> -->
+      <el-steps direction="vertical" :active="0">
+        <!-- <el-step title="步骤 1"></el-step>
+        <el-step title="步骤 2"></el-step> -->
+        <el-step :title="activity.context" v-for="(activity, index) in progressInfo" :key="index"
+          :description="activity.ftime"></el-step>
+      </el-steps>
     </el-dialog>
   </div>
 </template>

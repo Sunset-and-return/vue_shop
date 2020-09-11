@@ -182,7 +182,6 @@ export default {
       if (res.meta.status !== 200) return this.$message.error('获取商品分类失败！')
 
       this.cateList = res.data
-      // console.log(this.cateList)
     },
     // 级联选择框选中改变事件
     handleChange() {
@@ -190,7 +189,6 @@ export default {
     },
     // tabs 页签点击事件的处理函数
     handleClick() {
-      // console.log(this.activeName)
       this.getParamsData()
     },
     // 获取参数的数据列表
@@ -202,7 +200,6 @@ export default {
         return
       }
 
-      // console.log(this.selectedCateKeys)
       // 根据所选分类的id和当前所处的面板获取对应的参数
       const { data: res } = await this.$http.get(`categories/${this.cateId}/attributes`, { params: { sel: this.activeName } })
       if (res.meta.status !== 200) return this.$message.error('获取参数列表失败')
@@ -213,7 +210,7 @@ export default {
         item.inputVisible = false
         item.inputValue = ''
       })
-      console.log(res.data)
+
       if (this.activeName === 'many') {
         this.manyTableData = res.data
       } else {
@@ -260,7 +257,6 @@ export default {
 
         const { data: res } = await this.$http.put(`categories/${this.cateId}/attributes/${this.editForm.attr_id}`, { attr_name: this.editForm.attr_name, attr_sel: this.activeName })
 
-        console.log(res)
         if (res.meta.status !== 200) return this.$message.error('修改参数失败！')
 
         this.$message.success('修改参数成功！')
